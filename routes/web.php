@@ -30,13 +30,13 @@ Route::get('/dashboard', function () {
 
 Route::get('/products',
 ['uses' => 'App\Http\Controllers\ProductController@prducts']
-)->name('products');
+)->middleware(['auth','verified'])->name('products');
 
 
 Route::get('/createproduct',
 ['uses' => 'App\Http\Controllers\ProductController@post']
 
-)->name('createproduct');
+)->middleware(['auth','verified'])->name('createproduct');
 
 Route::post('/store',['uses'=>'App\Http\Controllers\ProductController@store'])->name("product.post");
 

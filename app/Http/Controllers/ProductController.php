@@ -10,6 +10,12 @@ use App\Models\Product;
 class ProductController extends Controller
 {
 
+  public function allProducts(){
+    $products=Product::all();
+    
+    return response()->json(["products"=>$products]);
+  }
+
   public function prducts(){
     $products=product::all();
     return Inertia::render('products',['products'=>$products]);
@@ -38,7 +44,7 @@ class ProductController extends Controller
         ]);
 
         if ($request->file('image')){
-          $path=$request->file('image')->store('products');
+          $path=$request->file('image')->storePublicly('products');
         }
     Product::create([
         "name"=>$request->name,
