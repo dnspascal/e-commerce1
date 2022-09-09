@@ -18,4 +18,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get("products", ["uses"=>"App\Http\Controllers\ProductController@allProducts"]);
+Route::get("/products", ["uses"=>"App\Http\Controllers\ProductController@allProducts"]);
+Route::post("/payment",["uses"=>"App\Http\Controllers\PaymentController@add"]);
+Route::get("/payment",["uses"=>"App\Http\Controllers\PaymentController@add"]);
